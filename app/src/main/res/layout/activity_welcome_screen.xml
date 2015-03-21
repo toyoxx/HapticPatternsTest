@@ -52,18 +52,52 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_weight="0.64"
             android:id="@+id/spacer1" />
 
-        <Button
-            android:layout_width="107dp"
+        <RelativeLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Start"
-            android:id="@+id/button"
-            android:layout_gravity="right"
-            android:background="@drawable/bluebtn"
-            android:textColor="@drawable/bluebtncolor"
-            android:onClick="nextScreen"/>
+            android:layout_weight="0.04">
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Start"
+                android:id="@+id/button"
+                android:background="@drawable/bluebtn"
+                android:textColor="@drawable/bluebtncolor"
+                android:onClick="sendMessage"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Connect"
+                android:id="@+id/bluetooth"
+                android:background="@drawable/bluebtn"
+                android:textColor="@drawable/bluebtncolor"
+                android:onClick="connectService"
+                android:layout_alignTop="@+id/button"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:id="@+id/debug"
+            android:layout_weight="0.03" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:id="@+id/status"
+            android:layout_weight="0.03" />
+
     </LinearLayout>
 </RelativeLayout>

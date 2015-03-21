@@ -1,4 +1,4 @@
-package jp.ac.tohoku.mech.irs.hapticpatterntest;
+package jp.ac.tohoku.mech.irs.hapticpatterntest.Activities;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -18,6 +18,8 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import com.sefford.circularprogressdrawable.CircularProgressDrawable;
+
+import jp.ac.tohoku.mech.irs.hapticpatterntest.R;
 
 
 public class CircularCountdownTest extends Activity {
@@ -41,7 +43,7 @@ public class CircularCountdownTest extends Activity {
                     currentAnimation = prepareStyle1Animation();
                     break;
                 case R.id.bt_style_2:
-                    currentAnimation = prepareStyle2Animation();
+                    currentAnimation = prepareStyle4Animation();
                     break;
                 case R.id.bt_style_3:
                     currentAnimation = prepareStyle3Animation();
@@ -171,18 +173,69 @@ public class CircularCountdownTest extends Activity {
 
         ObjectAnimator progressAnimation = ObjectAnimator.ofFloat(drawable, CircularProgressDrawable.PROGRESS_PROPERTY,
                 0f, 1f);
-        progressAnimation.setDuration(3600);
+        progressAnimation.setDuration(1000);
         progressAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
 
         ObjectAnimator colorAnimator = ObjectAnimator.ofInt(drawable, CircularProgressDrawable.RING_COLOR_PROPERTY,
                 getResources().getColor(android.R.color.holo_red_dark),
                 getResources().getColor(android.R.color.holo_green_light));
         colorAnimator.setEvaluator(new ArgbEvaluator());
-        colorAnimator.setDuration(3600);
+        colorAnimator.setDuration(1000);
+        colorAnimator.setRepeatCount(3);
+        progressAnimation.setRepeatCount(3);
+
 
         animation.playTogether(progressAnimation, colorAnimator);
         return animation;
     }
+
+    private Animator prepareStyle4Animation() {
+        AnimatorSet animation = new AnimatorSet();
+
+        ObjectAnimator progressAnimation = ObjectAnimator.ofFloat(drawable, CircularProgressDrawable.PROGRESS_PROPERTY,
+                1f, 0.66f);
+        progressAnimation.setDuration(1000);
+        progressAnimation.setInterpolator(new OvershootInterpolator());
+
+        ObjectAnimator colorAnimator = ObjectAnimator.ofInt(drawable, CircularProgressDrawable.RING_COLOR_PROPERTY,
+                getResources().getColor(android.R.color.holo_red_dark),
+                getResources().getColor(android.R.color.holo_green_light));
+        colorAnimator.setEvaluator(new ArgbEvaluator());
+        colorAnimator.setDuration(1000);
+
+        ObjectAnimator progressAnimation2 = ObjectAnimator.ofFloat(drawable, CircularProgressDrawable.PROGRESS_PROPERTY,
+                0.66f, 0.33f);
+        progressAnimation2.setDuration(1000);
+        progressAnimation2.setStartDelay(1000);
+        progressAnimation2.setInterpolator(new OvershootInterpolator());
+
+        ObjectAnimator progressAnimation3 = ObjectAnimator.ofFloat(drawable, CircularProgressDrawable.PROGRESS_PROPERTY,
+                0.33f, 0f);
+        progressAnimation3.setDuration(1000);
+        progressAnimation3.setStartDelay(2000);
+        progressAnimation3.setInterpolator(new OvershootInterpolator());
+
+
+        ObjectAnimator colorAnimator2 = ObjectAnimator.ofInt(drawable, CircularProgressDrawable.RING_COLOR_PROPERTY,
+                getResources().getColor(android.R.color.holo_green_light),
+                getResources().getColor(android.R.color.holo_red_dark));
+        colorAnimator2.setEvaluator(new ArgbEvaluator());
+        colorAnimator2.setDuration(1000);
+        colorAnimator2.setStartDelay(1000);
+
+
+        ObjectAnimator colorAnimator3= ObjectAnimator.ofInt(drawable, CircularProgressDrawable.RING_COLOR_PROPERTY,
+                getResources().getColor(android.R.color.holo_red_dark),
+                getResources().getColor(android.R.color.holo_green_light));
+        colorAnimator3.setEvaluator(new ArgbEvaluator());
+        colorAnimator3.setDuration(1000);
+        colorAnimator3.setStartDelay(2000);
+
+        animation.playTogether(progressAnimation, progressAnimation2, progressAnimation3, colorAnimator, colorAnimator2, colorAnimator3);
+        return animation;
+    }
+
+
 
     /**
      * Style 3 animation will turn a 3/4 animation with Anticipate/Overshoot interpolation to a

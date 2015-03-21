@@ -1,29 +1,44 @@
-package jp.ac.tohoku.mech.irs.hapticpatterntest;
+package jp.ac.tohoku.mech.irs.hapticpatterntest.Activities;
 
 import android.app.Activity;
-import android.graphics.Typeface;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import android.content.Intent;
+import android.widget.ImageButton;
+import java.lang.reflect.Field;
 
+import jp.ac.tohoku.mech.irs.hapticpatterntest.R;
 
-public class WelcomeScreen extends Activity{
-    public final static String COME_FROM_WELCOME_SCREEN = "jp.ac.tohoku.mech.irs.hapticpatterntest.COME_FROM_WELCOME_SCREEN";
+public class QuestionScreen extends Activity{
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome_screen);
+        setContentView(R.layout.activity_question_screen);
+        int[] ids = {R.id.ansButton1, R.id.ansButton2, R.id.ansButton3, R.id.ansButton4};
+        for(int i = 0;i < 4; i++){
+
+            ImageButton img = (ImageButton)findViewById(ids[i]);
+            int wi = img.getWidth();
+            Resources res = getResources();
+            Drawable dr = res.getDrawable(R.drawable.slide1);
+            img.setImageDrawable(dr);
+            img.getLayoutParams().width = wi;
+
+        }
+
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_welcome_screen, menu);
+        getMenuInflater().inflate(R.menu.menu_question_screen, menu);
         return true;
     }
 
@@ -40,13 +55,5 @@ public class WelcomeScreen extends Activity{
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void nextScreen(View view) {
-        // Do something in response to button
-        Intent intent = new Intent(this, CircularCountdownTest.class);
-        intent.putExtra(COME_FROM_WELCOME_SCREEN, true);
-        startActivity(intent);
-
     }
 }

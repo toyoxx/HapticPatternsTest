@@ -2,13 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jp.ac.tohoku.mech.irs.hapticpatterntest" >
 
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".WelcomeScreen"
+            android:name=".Activities.WelcomeScreen"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,16 +21,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CountDownScreen"
+            android:name=".Activities.CountDownScreen"
             android:label="@string/title_activity_count_down_screen" >
         </activity>
         <activity
-            android:name=".CircularCountdownTest"
+            android:name=".Activities.CircularCountdownTest"
             android:label="@string/title_activity_circular_countdown_test"
-            android:parentActivityName=".WelcomeScreen" >
+            android:parentActivityName=".Activities.WelcomeScreen" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="jp.ac.tohoku.mech.irs.hapticpatterntest.WelcomeScreen" />
+                android:value=".Activities.WelcomeScreen" />
+        </activity>
+        <activity
+            android:name=".Activities.QuestionScreen"
+            android:label="@string/title_activity_question_screen"
+            android:parentActivityName=".Activities.CountDownScreen" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.CountDownScreen" />
         </activity>
     </application>
 
