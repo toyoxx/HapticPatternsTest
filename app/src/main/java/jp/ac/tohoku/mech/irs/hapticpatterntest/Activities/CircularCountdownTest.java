@@ -8,6 +8,8 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +19,8 @@ import android.view.animation.CycleInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import com.sefford.circularprogressdrawable.CircularProgressDrawable;
 
 import jp.ac.tohoku.mech.irs.hapticpatterntest.R;
@@ -235,6 +239,17 @@ public class CircularCountdownTest extends Activity {
         return animation;
     }
 
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "No, you white devil", Toast.LENGTH_LONG ).show();
+        return;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        return (keyCode == KeyEvent.KEYCODE_BACK ? true : super.onKeyDown(keyCode, event));
+    }
 
 
     /**

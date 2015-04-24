@@ -43,16 +43,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
+            android:text="Press Connect to pair with Bluetooth device"
             android:fontFamily="sans-serif-thin"
 
             android:id="@+id/textView2"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:lines="2"
+            android:gravity="center" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.64"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.09" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Press Start to begin the Vibration Tests"
+            android:fontFamily="sans-serif-thin"
+            android:id="@+id/textView3"
+            android:lines="2"
+            android:layout_weight="0.09"
+            android:textAlignment="center"
+            android:gravity="center" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.53"
             android:id="@+id/spacer1" />
 
         <RelativeLayout
@@ -64,10 +84,10 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="Start"
-                android:id="@+id/button"
+                android:id="@+id/startButton"
                 android:background="@drawable/bluebtn"
                 android:textColor="@drawable/bluebtncolor"
-                android:onClick="sendMessage"
+                android:onClick="nextScreen"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
@@ -80,7 +100,7 @@
                 android:background="@drawable/bluebtn"
                 android:textColor="@drawable/bluebtncolor"
                 android:onClick="connectService"
-                android:layout_alignTop="@+id/button"
+                android:layout_alignTop="@+id/startButton"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
         </RelativeLayout>

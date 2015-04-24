@@ -10,4 +10,5 @@
     <string name="button_style_3_text">Sling empty</string>
     <string name="button_style_4_text">Pulse</string>
     <string name="title_activity_question_screen">QuestionScreen</string>
+
 </resources>

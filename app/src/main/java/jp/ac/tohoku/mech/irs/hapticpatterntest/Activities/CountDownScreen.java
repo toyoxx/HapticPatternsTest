@@ -18,6 +18,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sefford.circularprogressdrawable.CircularProgressDrawable;
 
@@ -244,4 +245,10 @@ public class CountDownScreen extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "No, you white devil", Toast.LENGTH_SHORT).show();
+    }
+
 }

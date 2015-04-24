@@ -16,6 +16,18 @@
         android:layout_alignParentStart="true"
         android:weightSum="1">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Vibration Test N"
+            android:id="@+id/questionNumber"
+            android:layout_gravity="center_horizontal"
+            android:singleLine="false"
+            android:gravity="center"
+            android:typeface="normal"
+            android:layout_weight="0.06" />
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,7 +70,7 @@
                     android:scaleType="centerInside"
                     android:adjustViewBounds="true"
                     android:hapticFeedbackEnabled="true"
-                    />
+                    android:onClick="answerPressed" />
 
                 <ImageButton
                     android:layout_width="fill_parent"
@@ -68,7 +80,7 @@
                     android:scaleType="centerInside"
                     android:adjustViewBounds="true"
                     android:hapticFeedbackEnabled="true"
-                    />
+                    android:onClick="answerPressed" />
             </TableRow>
 
             <TableRow
@@ -83,7 +95,7 @@
                     android:scaleType="centerInside"
                     android:adjustViewBounds="true"
                     android:hapticFeedbackEnabled="true"
-                    />
+                    android:onClick="answerPressed" />
 
                 <ImageButton
                     android:layout_width="fill_parent"
@@ -93,7 +105,7 @@
                     android:scaleType="centerInside"
                     android:adjustViewBounds="true"
                     android:hapticFeedbackEnabled="true"
-                    />
+                    android:onClick="answerPressed" />
             </TableRow>
         </TableLayout>
 

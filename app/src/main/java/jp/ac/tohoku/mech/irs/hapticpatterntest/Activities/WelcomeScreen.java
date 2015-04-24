@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.content.Intent;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -25,6 +26,7 @@ public class WelcomeScreen extends Activity{
     private TextView debug;
     private TextView status;
     private String clave ;
+    boolean authenticated = false;
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -49,10 +51,15 @@ public class WelcomeScreen extends Activity{
                     break;
                 case Bluetooth.MESSAGE_READ:
                     Log.d(TAG, "WS Message Received "+(String)msg.obj);
-                    if (((String)msg.obj).equals(clave)){
-                        status.setText("Connected");
+                    if(authenticated == false) {
+                        if (((String) msg.obj).equals(clave)) {
+                            status.setText("Connected");
+                            authenticated = true;
+                        } else {
+                            Bluetooth.getInstance().sendMessage(clave);
+                        }
                     }else{
-                        Bluetooth.getInstance().sendMessage(clave);
+
                     }
                     break;
                 case Bluetooth.MESSAGE_DEVICE_NAME:
@@ -64,6 +71,14 @@ public class WelcomeScreen extends Activity{
             }
         }
     };
+
+    protected void onResume() {
+        super.onResume();
+        Button button1 = (Button) findViewById(R.id.startButton);
+        button1.setEnabled(true);
+    }
+
+
 
     protected String getSaltString() {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
@@ -84,7 +99,7 @@ public class WelcomeScreen extends Activity{
         debug = (TextView) findViewById(R.id.debug);
         status = (TextView) findViewById(R.id.status);
         Bluetooth.getInstance().setmHandler(mHandler);
-        //Log.i(TAG,HapticPatternsController.getInstance().getNumPatterns()+"Hola");
+        HapticPatternsController.getInstance().initializeQuestions();
     }
 
 
@@ -112,6 +127,8 @@ public class WelcomeScreen extends Activity{
 
     public void nextScreen(View view) {
         // Do something in response to button
+        Button b = (Button) view;
+        b.setEnabled(false);
         Intent intent = new Intent(this, CountDownScreen.class);
         intent.putExtra(COME_FROM_WELCOME_SCREEN, true);
         startActivity(intent);
