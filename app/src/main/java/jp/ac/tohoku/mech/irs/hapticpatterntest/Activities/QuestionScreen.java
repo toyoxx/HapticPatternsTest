@@ -3,16 +3,12 @@ package jp.ac.tohoku.mech.irs.hapticpatterntest.Activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.ActionBarActivity;
+
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.TextureView;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -52,6 +48,7 @@ public class QuestionScreen extends Activity{
             R.drawable.pattern24
     };
 
+    ArrayList<Integer> options;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +57,7 @@ public class QuestionScreen extends Activity{
         tv.setText("Vibration Test Number "+(HapticPatternsController.getInstance().getCurrentQuestion()+1));
 
 
-        ArrayList<Integer> options = new ArrayList<Integer>();
+        options = new ArrayList<Integer>();
         options.add(HapticPatternsController.getInstance().getQuestions()[HapticPatternsController.getInstance().getCurrentQuestion()].getRightAnswer());
         for(int i=0; i< PatternQuestion.numOptions; i++ ){
             options.add(HapticPatternsController.getInstance().getQuestions()[HapticPatternsController.getInstance().getCurrentQuestion()].getOptions()[i]);
@@ -69,6 +66,7 @@ public class QuestionScreen extends Activity{
         Collections.shuffle(options);
         for(int i = 0;i < 4; i++){
             ImageButton img = (ImageButton)findViewById(botIds[i]);
+
             int wi = img.getWidth();
             Resources res = getResources();
             Drawable dr = res.getDrawable(patIds[options.get(i)]);
@@ -80,15 +78,23 @@ public class QuestionScreen extends Activity{
         ImageButton b = (ImageButton) view;
         b.setEnabled(false);
 
-        if (HapticPatternsController.getInstance().getCurrentQuestion()==10){
+        int i=0;
+        for (i=0;i<botIds.length;i++){
+            if(botIds[i]==b.getId()){
+                Log.d(QuestionScreen.class.getSimpleName(), "ITS " + i);
+                break;
+            }
 
+        }
+        HapticPatternsController.getInstance().getQuestions()[HapticPatternsController.getInstance().getCurrentQuestion()].setUserAnswer(options.get(i));
+        HapticPatternsController.getInstance().logStatus();
+        HapticPatternsController.getInstance().advanceQuestion();
+
+        if (HapticPatternsController.getInstance().getCurrentQuestion()<10){
+            finish();
         }else{
-            HapticPatternsController.getInstance().advanceQuestion();
 
-            Intent intent = new Intent(this, CountDownScreen.class);
-
-            intent.putExtra(WelcomeScreen.COME_FROM_WELCOME_SCREEN, false);
-            //intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            Intent intent = new Intent(this, FinalScreen.class);
             startActivity(intent);
         }
 

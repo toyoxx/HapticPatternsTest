@@ -79,6 +79,10 @@ public class HapticPatternsController {
                 questions[i].setOptionAt(j,wrongPos);
             }
         }
+        logStatus();
+    }
+
+    public void logStatus(){
         Log.d(TAG, "ans ; right ans ; opts" );
         for (int i=0; i<numQuestions;i++){
             Log.d(TAG, questions[i].writableAnswer());

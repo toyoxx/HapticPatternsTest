@@ -4,5 +4,15 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
     </style>
+    <style name="RoundCorner">
+        <item name="android:background">@drawable/roundcorner_selector</item>
+        <item name="android:padding">7dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:hapticFeedbackEnabled">true</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
 
 </resources>

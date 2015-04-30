@@ -11,4 +11,9 @@
     <string name="button_style_4_text">Pulse</string>
     <string name="title_activity_question_screen">QuestionScreen</string>
 
+    <string name="title_activity_final">FinalActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_final_screen">FinalScreen</string>
+
 </resources>

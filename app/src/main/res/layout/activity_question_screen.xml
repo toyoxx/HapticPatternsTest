@@ -63,23 +63,17 @@
                 android:layout_height="fill_parent">
 
                 <ImageButton
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/RoundCorner"
                     android:id="@+id/ansButton1"
                     android:layout_column="0"
-                    android:scaleType="centerInside"
-                    android:adjustViewBounds="true"
-                    android:hapticFeedbackEnabled="true"
-                    android:onClick="answerPressed" />
+                    android:onClick="answerPressed"
+
+                    />
 
                 <ImageButton
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/RoundCorner"
                     android:id="@+id/ansButton2"
                     android:layout_column="1"
-                    android:scaleType="centerInside"
-                    android:adjustViewBounds="true"
-                    android:hapticFeedbackEnabled="true"
                     android:onClick="answerPressed" />
             </TableRow>
 
@@ -88,23 +82,15 @@
                 android:layout_height="fill_parent">
 
                 <ImageButton
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/RoundCorner"
                     android:id="@+id/ansButton3"
                     android:layout_column="0"
-                    android:scaleType="centerInside"
-                    android:adjustViewBounds="true"
-                    android:hapticFeedbackEnabled="true"
                     android:onClick="answerPressed" />
 
                 <ImageButton
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/RoundCorner"
                     android:id="@+id/ansButton4"
                     android:layout_column="1"
-                    android:scaleType="centerInside"
-                    android:adjustViewBounds="true"
-                    android:hapticFeedbackEnabled="true"
                     android:onClick="answerPressed" />
             </TableRow>
         </TableLayout>
